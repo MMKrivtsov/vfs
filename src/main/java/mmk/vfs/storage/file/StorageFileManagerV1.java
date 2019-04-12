@@ -152,11 +152,16 @@ public class StorageFileManagerV1 implements StorageFileManager {
                         }
 
                         if (nextBlockInfo == BLOCK_ID_EMPTY_BLOCK) {
-                            buffer.putInt(parseOffset, BLOCK_ID_LAST_BLOCK);
-                            batStorageBlock.write(readOffset + parseOffset, bufferArray, parseOffset, 4);
+                            // reserve space for newly found empty block
                             try (StorageBlock storageBlock = getStorageBlock(checkBlockIdx)) {
                                 storageBlock.ensureCapacity();
                             }
+
+                            // mark block as used (last block of some Storage File)
+                            // this is done after reservation in case of failed reservation.
+                            buffer.putInt(parseOffset, BLOCK_ID_LAST_BLOCK);
+                            batStorageBlock.write(readOffset + parseOffset, bufferArray, parseOffset, 4);
+
                             return checkBlockIdx;
                         }
                     }
