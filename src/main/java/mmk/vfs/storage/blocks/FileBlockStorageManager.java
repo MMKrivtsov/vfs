@@ -1,9 +1,10 @@
 package mmk.vfs.storage.blocks;
 
 import mmk.vfs.exceptions.ObjectClosedException;
-import mmk.vfs.locks.EntityLockManager;
+import mmk.vfs.locks.AccessProviderManager;
 import mmk.vfs.locks.LockType;
-import mmk.vfs.locks.ReadWriteLockContainer;
+import mmk.vfs.locks.AccessController;
+import mmk.vfs.locks.ReadWriteAccessProvider;
 
 import java.io.IOException;
 import java.io.InterruptedIOException;
@@ -24,7 +25,7 @@ public class FileBlockStorageManager implements BlockStorageManager {
     private boolean mIsClosed = false;
     private int mDataStartOffset;
     private int mBlockSize;
-    private final EntityLockManager<Integer> mLockManager = new EntityLockManager<>();
+    private final AccessProviderManager<Integer> mLockManager = new AccessProviderManager<>(ReadWriteAccessProvider::new);
     private final Set<StorageBlock> mOpenedStorageBlocks = new HashSet<>();
 
     /**
@@ -86,11 +87,11 @@ public class FileBlockStorageManager implements BlockStorageManager {
 
     class FileBlock implements StorageBlock {
         private int mBlockStartOffset;
-        private final ReadWriteLockContainer mLockContainer;
+        private final AccessController mLockContainer;
 
         public FileBlock(int blockId) {
             mBlockStartOffset = getRawBlockOffset(blockId);
-            mLockContainer = new ReadWriteLockContainer(mLockManager.getLockerForPath(blockId));
+            mLockContainer = new AccessController(mLockManager.getLockerForPath(blockId));
         }
 
         @Override
@@ -138,10 +139,23 @@ public class FileBlockStorageManager implements BlockStorageManager {
 
         public synchronized void ensureCapacity() throws IOException {
             synchronized (mFileChannel) {
-                int minFileSize = mBlockStartOffset + mBlockSize;
-                if (mFileChannel.size() < minFileSize) {
-                    mFileChannel.truncate(minFileSize);
-                }
+                int minFileSize = mBlockStartOffset + mBlockSize + mDataStartOffset;
+                long size;
+                ByteBuffer zeroBuffer = null;
+                do {
+                    size = mFileChannel.size();
+                    long missingBytes = minFileSize - size;
+                    if (missingBytes > 0) {
+                        if (zeroBuffer == null) {
+                            zeroBuffer = ByteBuffer.allocate(mBlockSize);
+                        }
+                        else {
+                            zeroBuffer.clear();
+                        }
+                        zeroBuffer.limit((int)Math.min(zeroBuffer.capacity(), missingBytes));
+                        mFileChannel.write(zeroBuffer, size);
+                    }
+                } while (size < minFileSize);
             }
         }
     }

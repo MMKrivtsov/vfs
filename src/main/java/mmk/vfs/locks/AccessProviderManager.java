@@ -1,5 +1,6 @@
 package mmk.vfs.locks;
 
+import javax.xml.ws.Provider;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -8,8 +9,13 @@ import java.util.concurrent.ConcurrentHashMap;
  *
  * @param <T> type of resource identifier
  */
-public class EntityLockManager<T> {
-    private final Map<T, EntityLocker> mLockTable = new ConcurrentHashMap<>();
+public class AccessProviderManager<T> {
+    private final Map<T, AccessProvider> mLockTable = new ConcurrentHashMap<>();
+    private final AccessProviderConstructor mAccessProviderConstructor;
+
+    public AccessProviderManager(AccessProviderConstructor accessProviderConstructor) {
+        mAccessProviderConstructor = accessProviderConstructor;
+    }
 
     /**
      * Get lock manager for resource.
@@ -17,8 +23,8 @@ public class EntityLockManager<T> {
      * @param resourceId resource to get lock manager for
      * @return lock manager for resource
      */
-    public EntityLocker getLockerForPath(T resourceId) {
-        return mLockTable.computeIfAbsent(resourceId, p -> new EntityLocker(() -> checkLockerForRemoval(p), p));
+    public AccessProvider getLockerForPath(T resourceId) {
+        return mLockTable.computeIfAbsent(resourceId, p -> mAccessProviderConstructor.newInstance(() -> checkLockerForRemoval(p)));
     }
 
     /**
@@ -28,5 +34,9 @@ public class EntityLockManager<T> {
      */
     public void checkLockerForRemoval(T resourceId) {
         mLockTable.computeIfPresent(resourceId, (p, locker) -> locker.isReferenced() ? locker : null);
+    }
+
+    public interface AccessProviderConstructor {
+        AccessProvider newInstance(Runnable doOnNoReferences);
     }
 }

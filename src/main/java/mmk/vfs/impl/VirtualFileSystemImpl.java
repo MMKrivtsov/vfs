@@ -9,13 +9,15 @@ import mmk.vfs.exceptions.DirectoryNotEmptyException;
 import mmk.vfs.exceptions.FileAlreadyExistsException;
 import mmk.vfs.exceptions.RootDirectoryModificationException;
 import mmk.vfs.exceptions.VFSClosedException;
-import mmk.vfs.locks.EntityLockManager;
+import mmk.vfs.locks.AccessProviderManager;
+import mmk.vfs.locks.FileAccessProvider;
 import mmk.vfs.locks.LockType;
 import mmk.vfs.storage.file.StorageFile;
 import mmk.vfs.storage.file.StorageFileManager;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InterruptedIOException;
 import java.util.*;
 
 public class VirtualFileSystemImpl implements VirtualFileSystem {
@@ -30,13 +32,13 @@ public class VirtualFileSystemImpl implements VirtualFileSystem {
     private final StorageFileManager mStorage;
     private final DirectoryHandlerFactory mDirectoryHandlerFactory;
 
-    private final EntityLockManager<String> mEntityLockManager;
+    private final AccessProviderManager<String> mAccessProviderManager;
     private final Set<VFSEntry> mOpenedEntries = new HashSet<>();
 
     public VirtualFileSystemImpl(StorageFileManager storage, DirectoryHandlerFactory directoryHandlerFactory) {
         mStorage = storage;
         mDirectoryHandlerFactory = directoryHandlerFactory;
-        mEntityLockManager = new EntityLockManager<>();
+        mAccessProviderManager = new AccessProviderManager<>(FileAccessProvider::new);
     }
 
     private static String[] parsePath(String path) {
@@ -318,7 +320,11 @@ public class VirtualFileSystemImpl implements VirtualFileSystem {
             dirEntry.setStorageStartIdx(newFile.getStorageStartIdx());
             newFile.close();
 
-            handler.updateEntry(dirEntry);
+            try {
+                handler.updateEntry(dirEntry);
+            } catch (InterruptedIOException exception) {
+                throw new InterruptedIOException("File creation interrupted, VFS corrupted (Allocated block is not referenced, can't be used nor reused)");
+            }
 
             return newFile.getStorageStartIdx();
         }
@@ -348,8 +354,8 @@ public class VirtualFileSystemImpl implements VirtualFileSystem {
         }
     }
 
-    EntityLockManager<String> getEntityLockManager() {
-        return mEntityLockManager;
+    AccessProviderManager<String> getAccessProviderManager() {
+        return mAccessProviderManager;
     }
 
 }

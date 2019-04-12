@@ -1,8 +1,9 @@
 package mmk.vfs.storage;
 
-import mmk.vfs.locks.EntityLockManager;
+import mmk.vfs.locks.AccessProviderManager;
 import mmk.vfs.locks.LockType;
-import mmk.vfs.locks.ReadWriteLockContainer;
+import mmk.vfs.locks.AccessController;
+import mmk.vfs.locks.ReadWriteAccessProvider;
 import mmk.vfs.storage.blocks.BlockStorageManager;
 import mmk.vfs.storage.blocks.StorageBlock;
 
@@ -17,7 +18,7 @@ public class InMemoryBlockStorageManager implements BlockStorageManager {
     private final int mBlockReadLimit;
 
     private final List<byte[]> mBlocks = new ArrayList<>();
-    private EntityLockManager<Integer> mLockManager = new EntityLockManager<>();
+    private AccessProviderManager<Integer> mLockManager = new AccessProviderManager<>(ReadWriteAccessProvider::new);
 
     public InMemoryBlockStorageManager(int blockSize, int blockReadLimit) {
         mBlockSize = blockSize;
@@ -42,11 +43,11 @@ public class InMemoryBlockStorageManager implements BlockStorageManager {
 
     private class StorageBlockInMemory implements StorageBlock {
         private final int mBlockId;
-        private final ReadWriteLockContainer mLockContainer;
+        private final AccessController mLockContainer;
 
         public StorageBlockInMemory(int blockId) {
             mBlockId = blockId;
-            mLockContainer = new ReadWriteLockContainer(mLockManager.getLockerForPath(blockId));
+            mLockContainer = new AccessController(mLockManager.getLockerForPath(blockId));
         }
 
         @Override

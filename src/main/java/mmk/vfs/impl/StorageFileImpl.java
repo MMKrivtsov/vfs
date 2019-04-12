@@ -1,8 +1,8 @@
 package mmk.vfs.impl;
 
-import mmk.vfs.locks.EntityLockManager;
+import mmk.vfs.locks.AccessProviderManager;
 import mmk.vfs.locks.LockType;
-import mmk.vfs.locks.ReadWriteLockContainer;
+import mmk.vfs.locks.AccessController;
 import mmk.vfs.storage.blocks.StorageBlock;
 import mmk.vfs.storage.file.StorageFile;
 
@@ -12,7 +12,7 @@ import java.io.InterruptedIOException;
 public class StorageFileImpl implements StorageFile {
     private final StorageFileManagerInternalApi mFileStorage;
     private final int mStorageIndex;
-    private final ReadWriteLockContainer mLockContainer;
+    private final AccessController mLockContainer;
 
     private StorageBlock mCurrentStorageBlock = null;
     private int mBlockSequence;
@@ -22,7 +22,7 @@ public class StorageFileImpl implements StorageFile {
         mFileStorage = fileStorage;
         mStorageIndex = storageIndex;
         mBlockSequence = 0;
-        mLockContainer = new ReadWriteLockContainer(fileStorage.getLockManager().getLockerForPath(mStorageIndex));
+        mLockContainer = new AccessController(fileStorage.getLockManager().getLockerForPath(mStorageIndex));
     }
 
     @Override
@@ -82,7 +82,7 @@ public class StorageFileImpl implements StorageFile {
             int blockWriteLength = Math.min(mFileStorage.getBlockSize() - blockOffset, length - totalWrite);
             mCurrentStorageBlock.claim(LockType.WRITE_LOCK);
             try {
-                mCurrentStorageBlock.ensureCapacity();
+                //mCurrentStorageBlock.ensureCapacity(); // this is expected to be done on new block allocation, maybe remove this line
                 mCurrentStorageBlock.write(blockOffset, writeBuffer, bufferOffset + totalWrite, blockWriteLength);
             } finally {
                 mCurrentStorageBlock.release();
@@ -206,7 +206,7 @@ public class StorageFileImpl implements StorageFile {
          *
          * @return lock manager for controlling access to StorageFiles
          */
-        EntityLockManager<Integer> getLockManager();
+        AccessProviderManager<Integer> getLockManager();
 
         /**
          * Notify Manager that file handle was closed.

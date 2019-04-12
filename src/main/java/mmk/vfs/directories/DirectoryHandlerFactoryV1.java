@@ -62,7 +62,7 @@ public class DirectoryHandlerFactoryV1 implements DirectoryHandlerFactory {
             mStorageFile.claimLock(LockType.READ_LOCK);
             try {
                 do {
-                    entry = readEntry(mNextRecordReadId++);
+                    entry = doReadEntry(mNextRecordReadId++, false);
                 }
                 while (entry != null && entry.getFileType() != DirectoryEntryType.FILE && entry.getFileType() != DirectoryEntryType.DIRECTORY);
             } finally {

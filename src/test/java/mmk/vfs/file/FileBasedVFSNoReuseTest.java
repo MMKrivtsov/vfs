@@ -3,6 +3,7 @@
  */
 package mmk.vfs.file;
 
+import mmk.vfs.VFSDirectory;
 import mmk.vfs.VirtualFileSystem;
 import org.junit.Assert;
 import org.junit.Test;
@@ -34,6 +35,45 @@ public class FileBasedVFSNoReuseTest {
              VirtualFileSystem vfs2 = FileBasedVirtualFileSystem.open(getNewStorageFile())) {
             Assert.assertTrue("Root file must always exist", vfs1.exists("/"));
             Assert.assertTrue("Root file must always exist", vfs2.exists("/"));
+        }
+    }
+
+    @Test
+    public void testVFSCreateRemoveDirectory() throws IOException {
+        String dirName = "directory";
+        String filename = "file.ext";
+        String filePath = dirName + "/" + filename;
+
+        try (VirtualFileSystem vfs = FileBasedVirtualFileSystem.open(getNewStorageFile())) {
+            System.out.println("VFS Created");
+            Assert.assertTrue("Root file must always exist", vfs.exists("/"));
+
+            Assert.assertFalse("Must not contain directory on new VFS", vfs.exists(dirName));
+            vfs.createDir(dirName);
+            Assert.assertTrue("Directory must exist after creation", vfs.exists(dirName));
+
+            Assert.assertFalse("File should not exist in new directory", vfs.exists(filePath));
+            vfs.createFile(filePath);
+            Assert.assertTrue("File should exist after creation", vfs.exists(filePath));
+
+            try (VFSDirectory directory = vfs.openDir(dirName)) {
+                for (VFSDirectory.DirEntry entry : directory.getAllChilds()) {
+                    System.out.println(entry.getName());
+                }
+            }
+
+            try {
+                vfs.delete(dirName);
+                Assert.fail("Directory could not be deletable when it contains file");
+            } catch (IOException ignored) {
+            }
+
+            Assert.assertTrue("File should still exist in directory after failed delete", vfs.exists(filePath));
+            vfs.delete(filePath);
+            Assert.assertFalse("File should no longer exist after it is deleted", vfs.exists(filePath));
+
+            vfs.delete(dirName);
+            Assert.assertFalse("Directory should no longer exist after it is deleted", vfs.exists(dirName));
         }
     }
 }

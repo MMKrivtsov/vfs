@@ -5,14 +5,12 @@ import mmk.vfs.exceptions.OutOfStorage;
 import mmk.vfs.exceptions.StorageBlockNotAllocated;
 import mmk.vfs.exceptions.StorageCorrupted;
 import mmk.vfs.impl.StorageFileImpl;
-import mmk.vfs.locks.EntityLockManager;
-import mmk.vfs.locks.EntityLocker;
-import mmk.vfs.locks.Lock;
-import mmk.vfs.locks.LockType;
+import mmk.vfs.locks.*;
 import mmk.vfs.storage.blocks.BlockStorageManager;
 import mmk.vfs.storage.blocks.StorageBlock;
 
 import java.io.IOException;
+import java.io.InterruptedIOException;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.util.ArrayList;
@@ -32,7 +30,7 @@ public class StorageFileManagerV1 implements StorageFileManager {
 
     private BlockStorageManager mBlockStorageManager;
     private int mBlocksPerGroup;
-    private EntityLockManager<Integer> mLockManager = new EntityLockManager<>();
+    private AccessProviderManager<Integer> mLockManager = new AccessProviderManager<>(ReadWriteAccessProvider::new);
     private volatile boolean mIsClosed = false;
     private final Set<StorageFile> mOpenedFiles = new HashSet<>();
     private final InternalApi mInternalApi;
@@ -69,19 +67,23 @@ public class StorageFileManagerV1 implements StorageFileManager {
         int batIndex = getStorageGroupIndex(storageIndex);
         int inBatIndex = getStorageInGroupIndex(storageIndex);
 
-        try (StorageBlock storageBlock = getBATStorageBlock(batIndex)) {
-            storageBlock.claim(LockType.WRITE_LOCK);
-            storageBlock.ensureCapacity();
+        try (StorageBlock batStorageBlock = getBATStorageBlock(batIndex)) {
+            batStorageBlock.claim(LockType.WRITE_LOCK);
+            batStorageBlock.ensureCapacity();
 
-            storageBlock.readFully(4 * inBatIndex, buffer.array(), 0, buffer.capacity());
+            batStorageBlock.readFully(4 * inBatIndex, buffer.array(), 0, buffer.capacity());
 
             int nextBlockInfo = buffer.getInt();
             if (nextBlockInfo == BLOCK_ID_EMPTY_BLOCK) {
                 buffer.position(0);
                 buffer.putInt(BLOCK_ID_LAST_BLOCK);
 
-                storageBlock.write(4 * inBatIndex, buffer.array(), 0, buffer.capacity());
+                batStorageBlock.write(4 * inBatIndex, buffer.array(), 0, buffer.capacity());
             }
+        }
+        try (StorageBlock storageBlock = getStorageBlock(storageIndex)) {
+            storageBlock.claim(LockType.WRITE_LOCK);
+            storageBlock.ensureCapacity();
         }
     }
 
@@ -127,15 +129,15 @@ public class StorageFileManagerV1 implements StorageFileManager {
         byte[] bufferArray = buffer.array();
 
         do {
-            try (StorageBlock storageBlock = getBATStorageBlock(getStorageGroupIndex(checkBlockIdx))) {
-                storageBlock.claim(LockType.WRITE_LOCK);
-                storageBlock.ensureCapacity();
+            try (StorageBlock batStorageBlock = getBATStorageBlock(getStorageGroupIndex(checkBlockIdx))) {
+                batStorageBlock.claim(LockType.WRITE_LOCK);
+                batStorageBlock.ensureCapacity();
 
                 int bufferOffset = 0;
                 int bufferFill;
                 int readOffset = 0;
                 while (bufferOffset < buffer.capacity()) {
-                    int read = storageBlock.read(readOffset, bufferArray, bufferOffset, buffer.capacity() - bufferOffset);
+                    int read = batStorageBlock.read(readOffset, bufferArray, bufferOffset, buffer.capacity() - bufferOffset);
                     if (read == -1) break;
                     bufferFill = bufferOffset + read;
 
@@ -151,7 +153,10 @@ public class StorageFileManagerV1 implements StorageFileManager {
 
                         if (nextBlockInfo == BLOCK_ID_EMPTY_BLOCK) {
                             buffer.putInt(parseOffset, BLOCK_ID_LAST_BLOCK);
-                            storageBlock.write(readOffset + parseOffset, bufferArray, parseOffset, 4);
+                            batStorageBlock.write(readOffset + parseOffset, bufferArray, parseOffset, 4);
+                            try (StorageBlock storageBlock = getStorageBlock(checkBlockIdx)) {
+                                storageBlock.ensureCapacity();
+                            }
                             return checkBlockIdx;
                         }
                     }
@@ -191,11 +196,13 @@ public class StorageFileManagerV1 implements StorageFileManager {
 
         ByteBuffer buffer = ByteBuffer.allocate(4).order(ByteOrder.BIG_ENDIAN);
 
-        EntityLocker locker = mLockManager.getLockerForPath(storageFileId);
+        AccessProvider locker = mLockManager.getLockerForPath(storageFileId);
         locker.addReference();
-        Lock lock = locker.tryClaimWrite();
+        Lock lock = null;
 
         try {
+            lock = locker.claimWrite();
+
             if (lock == null) {
                 throw new IllegalStateException("Freeing opened file");
             }
@@ -210,7 +217,7 @@ public class StorageFileManagerV1 implements StorageFileManager {
 
                 int nextBlockId;
                 try (StorageBlock storageBlock = getBATStorageBlock(batIndex)) {
-                    storageBlock.claim(LockType.READ_LOCK);
+                    storageBlock.claim(LockType.WRITE_LOCK);
                     try {
                         storageBlock.readFully(4 * inBatIndex, buffer.array(), 0, buffer.capacity());
                         buffer.position(0);
@@ -222,7 +229,6 @@ public class StorageFileManagerV1 implements StorageFileManager {
 
                         nextBlockId = nextBlockIdLookup;
 
-                        storageBlock.claim(LockType.WRITE_LOCK);
                         buffer.putInt(0, 0);
                         storageBlock.write(4 * inBatIndex, buffer.array(), 0, buffer.capacity());
                     } finally {
@@ -235,6 +241,8 @@ public class StorageFileManagerV1 implements StorageFileManager {
                 }
                 storagePointer = nextBlockId;
             }
+        } catch (InterruptedException | InterruptedIOException exception) {
+            throw new InterruptedIOException("File deletion interrupted, VFS corrupted (Can't free used storage blocks now)");
         } finally {
             if (lock != null) lock.release();
             locker.removeReference();
@@ -338,6 +346,8 @@ public class StorageFileManagerV1 implements StorageFileManager {
             buffer.putInt(0, newBlockId);
             storageBlock.write(4 * inBatIndex, buffer.array(), 0, buffer.capacity());
             success = true;
+        } catch (InterruptedIOException exception) {
+            throw new InterruptedIOException("File extension interrupted, VFS corrupted (Allocated block is not referenced, can't be used nor reused)");
         } finally {
             if (!success) {
                 freeStorage(newBlockId);
@@ -378,7 +388,7 @@ public class StorageFileManagerV1 implements StorageFileManager {
         }
 
         @Override
-        public EntityLockManager<Integer> getLockManager() {
+        public AccessProviderManager<Integer> getLockManager() {
             return mLockManager;
         }
 

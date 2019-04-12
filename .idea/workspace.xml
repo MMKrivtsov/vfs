@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BookmarkManager">
+    <bookmark url="file://$PROJECT_DIR$/src/test/java/mmk/vfs/VFSMultiAccessTest.java" line="112" mnemonic="2" />
+    <bookmark url="file://$PROJECT_DIR$/src/main/java/mmk/vfs/storage/blocks/FileBlockStorageManager.java" line="142" mnemonic="9" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="bdfc0360-f1bd-482e-a744-9d4f25481f60" name="Default Changelist" comment="Default Changelist" />
+    <list default="true" id="bdfc0360-f1bd-482e-a744-9d4f25481f60" name="Default Changelist" comment="Default Changelist">
+      <change beforePath="$PROJECT_DIR$/src/main/java/mmk/vfs/impl/StorageFileImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mmk/vfs/impl/StorageFileImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mmk/vfs/storage/file/StorageFileManagerV1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mmk/vfs/storage/file/StorageFileManagerV1.java" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -23,10 +30,16 @@
   <component name="FileEditorManager">
     <leaf>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Readme.md">
+        <entry file="file://$PROJECT_DIR$/src/main/java/mmk/vfs/storage/file/StorageFileManagerV1.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="491">
-              <caret line="103" selection-start-line="103" selection-end-line="103" />
+            <state relative-caret-position="471">
+              <caret line="83" column="73" lean-forward="true" selection-start-line="83" selection-start-column="73" selection-end-line="83" selection-end-column="73" />
+              <folding>
+                <element signature="e#3610#3611#0" expanded="true" />
+                <element signature="e#7683#7684#0" expanded="true" />
+                <element signature="e#12422#12423#0" expanded="true" />
+                <element signature="e#12539#12540#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -67,19 +80,9 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/mmk/vfs/locks/EntityLock.java" />
-        <option value="$PROJECT_DIR$/src/main/java/mmk/vfs/storage/LockType.java" />
-        <option value="$PROJECT_DIR$/src/main/java/mmk/vfs/storage/file/ReadWriteLockable.java" />
-        <option value="$PROJECT_DIR$/src/main/java/mmk/vfs/storage/file/MultiBlockStorageManagerV1.java" />
-        <option value="$PROJECT_DIR$/src/main/java/mmk/vfs/storage/file/ReadWriteLockContainer.java" />
-        <option value="$PROJECT_DIR$/src/test/java/mmk/vfs/DirectoryHandlerV1.java" />
-        <option value="$PROJECT_DIR$/src/main/java/mmk/vfs/storage/file/MultiBlockStorageImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/mmk/vfs/storage/file/StorageBlock.java" />
-        <option value="$PROJECT_DIR$/src/main/java/mmk/vfs/storage/file/FileBlockStorage.java" />
         <option value="$PROJECT_DIR$/src/test/java/mmk/vfs/InMemoryBlockStorage.java" />
         <option value="$PROJECT_DIR$/src/main/java/mmk/vfs/storage/MultiBlockStorage.java" />
         <option value="$PROJECT_DIR$/src/test/java/mmk/vfs/DirectoryHandlerV1Test.java" />
-        <option value="$PROJECT_DIR$/src/test/java/mmk/vfs/VFSMultiAccessTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/mmk/vfs/exceptions/RootDirectoryModificationException.java" />
         <option value="$PROJECT_DIR$/src/main/java/mmk/vfs/exceptions/FileAlreadyExistsException.java" />
         <option value="$PROJECT_DIR$/src/main/java/mmk/vfs/FileOpenMode.java" />
@@ -91,33 +94,43 @@
         <option value="$PROJECT_DIR$/src/main/java/mmk/vfs/VFSEntry.java" />
         <option value="$PROJECT_DIR$/src/main/java/mmk/vfs/util/HeaderUtil.java" />
         <option value="$PROJECT_DIR$/src/main/java/mmk/vfs/storage/blocks/StorageBlock.java" />
-        <option value="$PROJECT_DIR$/src/test/java/mmk/vfs/storage/InMemoryBlockStorageManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/mmk/vfs/storage/blocks/BlockStorageManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/mmk/vfs/exceptions/VFSClosedException.java" />
         <option value="$PROJECT_DIR$/src/main/java/mmk/vfs/exceptions/EntryClosedException.java" />
         <option value="$PROJECT_DIR$/src/main/java/mmk/vfs/storage/file/StorageFile.java" />
         <option value="$PROJECT_DIR$/src/main/java/mmk/vfs/storage/file/StorageFileManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/mmk/vfs/locks/Lock.java" />
-        <option value="$PROJECT_DIR$/src/main/java/mmk/vfs/file/FileBasedVirtualFileSystem.java" />
         <option value="$PROJECT_DIR$/src/main/java/mmk/vfs/directories/DirectoryEntry.java" />
         <option value="$PROJECT_DIR$/src/main/java/mmk/vfs/directories/DirectoryEntryType.java" />
         <option value="$PROJECT_DIR$/src/main/java/mmk/vfs/directories/DirectoryHandlerFactory.java" />
         <option value="$PROJECT_DIR$/src/main/java/mmk/vfs/exceptions/ClosedException.java" />
         <option value="$PROJECT_DIR$/src/main/java/mmk/vfs/exceptions/ObjectClosedException.java" />
-        <option value="$PROJECT_DIR$/src/main/java/mmk/vfs/locks/EntityLockManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/mmk/vfs/directories/DirectoryHandler.java" />
         <option value="$PROJECT_DIR$/src/test/java/mmk/vfs/directories/DirectoryHandlerV1Test.java" />
-        <option value="$PROJECT_DIR$/src/main/java/mmk/vfs/storage/file/StorageFileManagerV1.java" />
-        <option value="$PROJECT_DIR$/src/main/java/mmk/vfs/locks/EntityLocker.java" />
-        <option value="$PROJECT_DIR$/src/main/java/mmk/vfs/locks/ReadWriteLockContainer.java" />
         <option value="$PROJECT_DIR$/src/main/java/mmk/vfs/impl/VFSFileImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/mmk/vfs/impl/VFSEntryImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/mmk/vfs/impl/VFSDirectoryImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/mmk/vfs/storage/blocks/FileBlockStorageManager.java" />
-        <option value="$PROJECT_DIR$/src/main/java/mmk/vfs/impl/VirtualFileSystemImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/mmk/vfs/impl/StorageFileImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/mmk/vfs/directories/DirectoryHandlerFactoryV1.java" />
         <option value="$PROJECT_DIR$/Readme.md" />
+        <option value="$PROJECT_DIR$/src/main/java/mmk/vfs/locks/EntityLocker.java" />
+        <option value="$PROJECT_DIR$/src/main/java/mmk/vfs/locks/EntityLockManager.java" />
+        <option value="$PROJECT_DIR$/src/main/java/mmk/vfs/locks/ReadWriteLockContainer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/mmk/vfs/locks/AccessControlManager.java" />
+        <option value="$PROJECT_DIR$/src/main/java/mmk/vfs/locks/AccessClaimer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/mmk/vfs/locks/AccessProviderManager.java" />
+        <option value="$PROJECT_DIR$/src/main/java/mmk/vfs/locks/ReadWriteLocker.java" />
+        <option value="$PROJECT_DIR$/src/main/java/mmk/vfs/locks/AccessProvider.java" />
+        <option value="$PROJECT_DIR$/src/main/java/mmk/vfs/impl/VFSEntryImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/mmk/vfs/locks/AccessController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/mmk/vfs/directories/DirectoryHandlerFactoryV1.java" />
+        <option value="$PROJECT_DIR$/src/test/java/mmk/vfs/VFSMultiAccessTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/mmk/vfs/locks/FileAccessProvider.java" />
+        <option value="$PROJECT_DIR$/src/main/java/mmk/vfs/locks/ReadWriteAccessProvider.java" />
+        <option value="$PROJECT_DIR$/src/test/java/mmk/vfs/file/FileBasedVFSNoReuseTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/mmk/vfs/file/FileBasedVirtualFileSystem.java" />
+        <option value="$PROJECT_DIR$/src/main/java/mmk/vfs/storage/blocks/FileBlockStorageManager.java" />
+        <option value="$PROJECT_DIR$/src/main/java/mmk/vfs/impl/StorageFileImpl.java" />
+        <option value="$PROJECT_DIR$/src/test/java/mmk/vfs/storage/InMemoryBlockStorageManager.java" />
+        <option value="$PROJECT_DIR$/src/main/java/mmk/vfs/impl/VirtualFileSystemImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/mmk/vfs/storage/file/StorageFileManagerV1.java" />
       </list>
     </option>
   </component>
@@ -142,6 +155,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -197,11 +211,17 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="vfs" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="VirtualFileSystem" type="b2602c69:ProjectViewProjectNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="vfs" type="462c0819:PsiDirectoryNode" />
+              <item name="file" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="AndroidView" />
     </panes>
@@ -241,7 +261,37 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.mmk.vfs in test (1)">
+    <configuration name="FileBasedVFSNoReuseTest.testVFSCreateRemoveDirectory" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="mmk.vfs.file.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="mmk.vfs.file" />
+      <option name="MAIN_CLASS_NAME" value="mmk.vfs.file.FileBasedVFSNoReuseTest" />
+      <option name="METHOD_NAME" value="testVFSCreateRemoveDirectory" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="mmk.vfs in test (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="mmk.vfs.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="mmk.vfs" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="mmk.vfs in test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage">
         <pattern>
@@ -265,6 +315,8 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.mmk.vfs in test (1)" />
+        <item itemvalue="JUnit.FileBasedVFSNoReuseTest.testVFSCreateRemoveDirectory" />
         <item itemvalue="JUnit.mmk.vfs in test" />
       </list>
     </recent_temporary>
@@ -291,35 +343,35 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="mmk_vfs_in_test - 2019.04.07 at 16h 19m 33s.xml">
-      <configuration name="mmk.vfs in test" configurationId="JUnit" />
+    <history-entry file="FileBasedVFSNoReuseTest_testVFSCreateRemoveDirectory - 2019.04.12 at 23h 01m 34s.xml">
+      <configuration name="FileBasedVFSNoReuseTest.testVFSCreateRemoveDirectory" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="mmk_vfs_in_test - 2019.04.07 at 16h 21m 48s.xml">
-      <configuration name="mmk.vfs in test" configurationId="JUnit" />
+    <history-entry file="FileBasedVFSNoReuseTest_testVFSCreateRemoveDirectory - 2019.04.12 at 23h 03m 33s.xml">
+      <configuration name="FileBasedVFSNoReuseTest.testVFSCreateRemoveDirectory" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="mmk_vfs_in_test - 2019.04.07 at 16h 22m 31s.xml">
-      <configuration name="mmk.vfs in test" configurationId="JUnit" />
+    <history-entry file="mmk_vfs_in_test_(1) - 2019.04.12 at 23h 03m 45s.xml">
+      <configuration name="mmk.vfs in test (1)" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="mmk_vfs_in_test - 2019.04.07 at 16h 36m 48s.xml">
-      <configuration name="mmk.vfs in test" configurationId="JUnit" />
+    <history-entry file="mmk_vfs_in_test_(1) - 2019.04.12 at 23h 06m 10s.xml">
+      <configuration name="mmk.vfs in test (1)" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="mmk_vfs_in_test - 2019.04.07 at 16h 38m 45s.xml">
-      <configuration name="mmk.vfs in test" configurationId="JUnit" />
+    <history-entry file="mmk_vfs_in_test_(1) - 2019.04.12 at 23h 06m 18s.xml">
+      <configuration name="mmk.vfs in test (1)" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="mmk_vfs_in_test - 2019.04.07 at 16h 39m 04s.xml">
-      <configuration name="mmk.vfs in test" configurationId="JUnit" />
+    <history-entry file="mmk_vfs_in_test_(1) - 2019.04.12 at 23h 06m 56s.xml">
+      <configuration name="mmk.vfs in test (1)" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="mmk_vfs_in_test - 2019.04.07 at 16h 40m 05s.xml">
-      <configuration name="mmk.vfs in test" configurationId="JUnit" />
+    <history-entry file="mmk_vfs_in_test_(1) - 2019.04.12 at 23h 09m 10s.xml">
+      <configuration name="mmk.vfs in test (1)" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="mmk_vfs_in_test - 2019.04.07 at 16h 41m 49s.xml">
-      <configuration name="mmk.vfs in test" configurationId="JUnit" />
+    <history-entry file="mmk_vfs_in_test_(1) - 2019.04.12 at 23h 10m 18s.xml">
+      <configuration name="mmk.vfs in test (1)" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="mmk_vfs_in_test - 2019.04.07 at 16h 43m 47s.xml">
-      <configuration name="mmk.vfs in test" configurationId="JUnit" />
+    <history-entry file="mmk_vfs_in_test_(1) - 2019.04.12 at 23h 12m 22s.xml">
+      <configuration name="mmk.vfs in test (1)" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="mmk_vfs_in_test - 2019.04.07 at 17h 04m 06s.xml">
-      <configuration name="mmk.vfs in test" configurationId="JUnit" />
+    <history-entry file="mmk_vfs_in_test_(1) - 2019.04.12 at 23h 12m 35s.xml">
+      <configuration name="mmk.vfs in test (1)" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
@@ -329,7 +381,7 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16791044" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16950959" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -339,7 +391,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3289777" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32719395" />
-      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.30119178" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.30119178" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -384,45 +436,6 @@
     </SUITE>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/mmk/vfs/storage/file/StorageBlock.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/mmk/vfs/storage/MultiBlockStorage.java" />
-    <entry file="jar://C:/jdk/src.zip!/java/util/Arrays.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="4276" column="19" selection-start-line="4276" selection-start-column="19" selection-end-line="4276" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/jdk/src.zip!/java/util/Objects.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="84" column="30" lean-forward="true" selection-start-line="84" selection-start-column="30" selection-end-line="84" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/mmk/vfs/DirectoryHandlerV1Test.java" />
-    <entry file="jar://C:/jdk/src.zip!/java/io/FileNotFoundException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="629">
-          <caret line="62" column="11" selection-start-line="62" selection-start-column="11" selection-end-line="62" selection-end-column="11" />
-          <folding>
-            <element signature="e#1471#1472#0" expanded="true" />
-            <element signature="e#1495#1496#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/mmk/vfs/exceptions/RootDirectoryModificationException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="8" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="23" />
-          <folding>
-            <element signature="e#190#191#0" expanded="true" />
-            <element signature="e#220#221#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/jdk/src.zip!/java/nio/file/FileSystemException.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
@@ -441,16 +454,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="34" column="13" selection-start-line="34" selection-start-column="13" selection-end-line="34" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/mmk/vfs/VFSMultiAccessTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="199">
-          <caret line="78" column="37" lean-forward="true" selection-start-line="78" selection-start-column="37" selection-end-line="78" selection-end-column="37" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -489,35 +492,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/mmk/vfs/storage/blocks/BlockStorageManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/mmk/vfs/storage/InMemoryBlockStorageManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="267">
-          <caret line="48" column="49" selection-start-line="48" selection-start-column="49" selection-end-line="48" selection-end-column="49" />
-          <folding>
-            <element signature="e#4067#4068#0" expanded="true" />
-            <element signature="e#4113#4114#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/mmk/vfs/locks/LockType.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/mmk/vfs/locks/Lock.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="257">
-          <caret line="18" column="25" selection-start-line="18" selection-start-column="25" selection-end-line="18" selection-end-column="25" />
         </state>
       </provider>
     </entry>
@@ -564,27 +542,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/mmk/vfs/VFSDirectory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="9" column="42" lean-forward="true" selection-start-line="9" selection-start-column="42" selection-end-line="9" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/mmk/vfs/VFSEntry.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/mmk/vfs/locks/EntityLockManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="314">
-          <caret line="20" column="109" selection-start-line="20" selection-start-column="109" selection-end-line="20" selection-end-column="109" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -609,13 +570,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/mmk/vfs/storage/file/StorageFileManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
-          <caret line="18" column="16" selection-start-line="18" selection-start-column="16" selection-end-line="18" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/mmk/vfs/directories/DirectoryHandlerFactory.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
@@ -623,130 +577,235 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/mmk/vfs/locks/EntityLocker.java">
+    <entry file="file://$PROJECT_DIR$/Readme.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1309">
-          <caret line="133" lean-forward="true" selection-start-line="133" selection-end-line="133" />
-          <folding>
-            <element signature="e#3813#3814#0" expanded="true" />
-            <element signature="e#3842#3843#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/mmk/vfs/VFSSingleAccessTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="146" selection-start-line="146" selection-end-line="146" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/mmk/vfs/locks/ReadWriteLockContainer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="106" selection-start-line="5" selection-start-column="106" selection-end-line="5" selection-end-column="106" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/mmk/vfs/impl/VFSEntryImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="199">
-          <caret line="51" column="18" selection-start-line="51" selection-start-column="18" selection-end-line="51" selection-end-column="18" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/mmk/vfs/impl/VFSDirectoryImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="199">
-          <caret line="18" column="4" selection-start-line="18" selection-start-column="4" selection-end-line="18" selection-end-column="4" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/mmk/vfs/impl/VFSFileImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="10" column="39" selection-start-line="10" selection-start-column="39" selection-end-line="10" selection-end-column="39" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="491">
+          <caret line="103" selection-start-line="103" selection-end-line="103" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/mmk/vfs/VirtualFileSystem.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="206">
-          <caret line="35" column="9" selection-start-line="35" selection-start-column="9" selection-end-line="35" selection-end-column="9" />
+          <caret line="73" column="12" selection-start-line="73" selection-start-column="12" selection-end-line="73" selection-end-column="12" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/mmk/vfs/file/FileBasedVirtualFileSystem.java">
+    <entry file="jar://C:/jdk/jre/lib/rt.jar!/sun/misc/Unsafe.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-784">
-          <caret line="35" selection-start-line="35" selection-end-line="35" />
+        <state relative-caret-position="206">
+          <caret line="353" column="23" selection-start-line="353" selection-start-column="23" selection-end-line="353" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/mmk/vfs/locks/AccessProviderManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="199">
+          <caret line="15" column="17" selection-start-line="15" selection-start-column="17" selection-end-line="15" selection-end-column="17" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/jdk/src.zip!/java/util/concurrent/Semaphore.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="199">
+          <caret line="176" column="18" selection-start-line="176" selection-start-column="18" selection-end-line="176" selection-end-column="18" />
+          <folding>
+            <element signature="e#7915#7916#0" expanded="true" />
+            <element signature="e#7953#7954#0" expanded="true" />
+            <element signature="e#9084#9085#0" expanded="true" />
+            <element signature="e#9131#9132#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/mmk/vfs/locks/AccessProvider.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="229">
+          <caret line="32" column="25" selection-start-line="32" selection-start-column="25" selection-end-line="32" selection-end-column="25" />
+          <folding>
+            <element signature="e#362#363#0" expanded="true" />
+            <element signature="e#414#415#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/mmk/vfs/impl/VFSFileImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="65" column="32" selection-start-line="65" selection-start-column="32" selection-end-line="65" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/mmk/vfs/locks/AccessController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="699">
+          <caret line="53" column="43" selection-start-line="53" selection-start-column="43" selection-end-line="53" selection-end-column="43" />
+          <folding>
+            <element signature="e#1510#1511#0" expanded="true" />
+            <element signature="e#1569#1570#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/mmk/vfs/locks/Lock.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="484">
+          <caret line="32" column="19" selection-start-line="32" selection-start-column="19" selection-end-line="32" selection-end-column="19" />
+          <folding>
+            <element signature="e#750#751#0" expanded="true" />
+            <element signature="e#783#784#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/mmk/vfs/impl/VFSEntryImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="267">
+          <caret line="36" selection-start-line="36" selection-end-line="36" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/mmk/vfs/VFSMultiAccessTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="301">
+          <caret line="93" column="40" lean-forward="true" selection-start-line="93" selection-start-column="40" selection-end-line="93" selection-end-column="40" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/mmk/vfs/locks/FileAccessProvider.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="117" selection-start-line="6" selection-start-column="117" selection-end-line="6" selection-end-column="117" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/mmk/vfs/locks/ReadWriteAccessProvider.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="20" column="23" selection-start-line="20" selection-start-column="23" selection-end-line="20" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/mmk/vfs/VFSSingleAccessTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="172">
+          <caret line="109" lean-forward="true" selection-start-line="109" selection-end-line="147" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/mmk/vfs/VFSDirectory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="39" selection-start-line="39" selection-end-line="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/jdk/src.zip!/java/nio/channels/FileChannel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="971">
+          <caret line="777" column="24" selection-start-line="777" selection-start-column="24" selection-end-line="777" selection-end-column="24" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/mmk/vfs/util/HeaderUtil.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="36" column="73" lean-forward="true" selection-start-line="36" selection-start-column="73" selection-end-line="36" selection-end-column="73" />
+        <state relative-caret-position="437">
+          <caret line="48" column="14" lean-forward="true" selection-start-line="48" selection-start-column="14" selection-end-line="48" selection-end-column="14" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/mmk/vfs/storage/blocks/StorageBlock.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/mmk/vfs/file/FileBasedVirtualFileSystem.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="592">
-          <caret line="72" selection-start-line="72" selection-end-line="74" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/mmk/vfs/storage/blocks/FileBlockStorageManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-9">
-          <caret line="63" column="30" lean-forward="true" selection-start-line="63" selection-start-column="30" selection-end-line="63" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/mmk/vfs/impl/VirtualFileSystemImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="626">
-          <caret line="84" selection-start-line="84" selection-end-line="84" />
+        <state relative-caret-position="471">
+          <caret line="108" column="101" lean-forward="true" selection-start-line="108" selection-start-column="101" selection-end-line="108" selection-end-column="101" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/mmk/vfs/impl/StorageFileImpl.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/mmk/vfs/storage/blocks/FileBlockStorageManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-417">
-          <caret line="119" selection-start-line="119" selection-end-line="119" />
+        <state relative-caret-position="556">
+          <caret line="163" lean-forward="true" selection-start-line="163" selection-end-line="163" />
+          <folding>
+            <element signature="e#2583#2584#0" expanded="true" />
+            <element signature="e#2629#2630#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/mmk/vfs/storage/file/StorageFileManagerV1.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/mmk/vfs/file/FileBasedVFSNoReuseTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1056">
-          <caret line="390" lean-forward="true" selection-start-line="390" selection-end-line="390" />
+        <state relative-caret-position="427">
+          <caret line="75" selection-start-line="75" selection-end-line="75" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/mmk/vfs/file/FileBasedVFSReuseTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="35" lean-forward="true" selection-start-line="35" selection-end-line="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/mmk/vfs/storage/blocks/BlockStorageManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/mmk/vfs/storage/file/StorageFileManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="206">
+          <caret line="26" selection-start-line="26" selection-end-line="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/mmk/vfs/impl/VirtualFileSystemImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="199">
+          <caret line="211" selection-start-line="211" selection-end-line="211" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#13174#13175#0" expanded="true" />
+            <element signature="e#13236#13237#0" expanded="true" />
+            <element signature="e#13806#13807#0" expanded="true" />
+            <element signature="e#13851#13852#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/mmk/vfs/impl/VFSDirectoryImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="109" lean-forward="true" selection-start-line="109" selection-end-line="109" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/mmk/vfs/directories/DirectoryHandlerFactoryV1.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2363">
-          <caret line="151" column="76" selection-start-line="151" selection-start-column="76" selection-end-line="151" selection-end-column="76" />
+        <state relative-caret-position="199">
+          <caret line="185" selection-start-line="185" selection-end-line="185" />
           <folding>
             <element signature="e#1611#1612#0" expanded="true" />
             <element signature="e#1675#1676#0" expanded="true" />
@@ -754,10 +813,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Readme.md">
+    <entry file="file://$PROJECT_DIR$/src/main/java/mmk/vfs/impl/StorageFileImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="491">
-          <caret line="103" selection-start-line="103" selection-end-line="103" />
+        <state relative-caret-position="199">
+          <caret line="63" selection-start-line="63" selection-end-line="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/mmk/vfs/storage/blocks/StorageBlock.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="461">
+          <caret line="82" column="9" selection-start-line="82" selection-start-column="9" selection-end-line="82" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/mmk/vfs/storage/InMemoryBlockStorageManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="199">
+          <caret line="87" selection-start-line="87" selection-end-line="87" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/mmk/vfs/storage/file/StorageFileManagerV1.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="471">
+          <caret line="83" column="73" lean-forward="true" selection-start-line="83" selection-start-column="73" selection-end-line="83" selection-end-column="73" />
+          <folding>
+            <element signature="e#3610#3611#0" expanded="true" />
+            <element signature="e#7683#7684#0" expanded="true" />
+            <element signature="e#12422#12423#0" expanded="true" />
+            <element signature="e#12539#12540#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

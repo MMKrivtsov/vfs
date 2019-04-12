@@ -99,13 +99,7 @@ public final class FileBasedVirtualFileSystem {
             int directoryHeaderOffsetInFile = storageHeaderOffsetInFile + storageHeader.getLength();
             HeaderUtil.readOrCreateHeader(
                     fileChannel, directoryHeaderOffsetInFile, directoryHeader.getLength(),
-                    () -> {
-                        int paddedStartOffset = (totalHeadersLength + blockSize - 1) / blockSize;
-                        paddedStartOffset *= blockSize;
-
-                        storageHeader.mBlockSize = blockSize;
-                        storageHeader.mFileStartOffset = paddedStartOffset;
-                    },
+                    () -> {},
                     directoryHeader::read,
                     directoryHeader::write
             );

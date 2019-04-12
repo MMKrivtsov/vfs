@@ -5,7 +5,7 @@ import mmk.vfs.directories.DirectoryEntry;
 import mmk.vfs.directories.DirectoryHandler;
 import mmk.vfs.exceptions.FileAlreadyOpenException;
 import mmk.vfs.locks.LockType;
-import mmk.vfs.locks.ReadWriteLockContainer;
+import mmk.vfs.locks.AccessController;
 
 import java.io.IOException;
 
@@ -16,7 +16,7 @@ public class VFSEntryImpl implements VFSEntry {
     int mParentDirectoryId;
     int mParentDirectoryOffset;
     boolean mIsClosed;
-    ReadWriteLockContainer mLockContainer;
+    AccessController mLockContainer;
 
     public VFSEntryImpl(String fileName, String filePath, VirtualFileSystemImpl vfs, int parentDirectoryFileIdx, int parentDirectoryOffset) {
         mFileName = fileName;
@@ -31,10 +31,10 @@ public class VFSEntryImpl implements VFSEntry {
         if (mIsClosed) throw new IllegalStateException("Already closed");
 
         if (mLockContainer == null) {
-            mLockContainer = new ReadWriteLockContainer(mVfs.getEntityLockManager().getLockerForPath(mFilePath));
+            mLockContainer = new AccessController(mVfs.getAccessProviderManager().getLockerForPath(mFilePath));
         }
 
-        if (!mLockContainer.tryClaimLock(lockType)) {
+        if (!mLockContainer.claimLock(lockType)) {
             throw new FileAlreadyOpenException("Can't acquire " + lockType + " lock");
         }
     }

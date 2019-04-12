@@ -5,46 +5,35 @@ import java.io.InterruptedIOException;
 /**
  * Utility class for wrapping lock claiming, storage and release to lessen code redundancy in other files.
  */
-public class ReadWriteLockContainer {
-    private final EntityLocker mLocker;
+public class AccessController {
+    private final AccessProvider mLocker;
     private boolean mClosed;
     private transient Lock mLock;
 
-    public ReadWriteLockContainer(EntityLocker locker) {
+    public AccessController(AccessProvider locker) {
         this.mLocker = locker;
         mClosed = false;
         mLocker.addReference();
     }
 
-    public synchronized void claimLock(LockType lockType) throws InterruptedIOException {
-        if (mClosed) throw new IllegalStateException("Lock already closed");
-
-        if (lockType == LockType.READ_LOCK) {
-            try {
-                mLock = mLocker.claimRead(mLock);
-            } catch (InterruptedException e) {
-                throw new InterruptedIOException();
-            }
-        }
-        else if (lockType == LockType.WRITE_LOCK) {
-            try {
-                mLock = mLocker.claimWrite(mLock);
-            } catch (InterruptedException e) {
-                throw new InterruptedIOException();
-            }
-        }
-    }
-
-    public synchronized boolean tryClaimLock(LockType lockType) {
+    public synchronized boolean claimLock(LockType lockType) throws InterruptedIOException {
         if (mClosed) throw new IllegalStateException("Lock already closed");
 
         if (mLock != null) throw new IllegalStateException("Lock already claimed");
 
         if (lockType == LockType.READ_LOCK) {
-            mLock = mLocker.tryClaimRead();
+            try {
+                mLock = mLocker.claimRead();
+            } catch (InterruptedException e) {
+                throw new InterruptedIOException();
+            }
         }
         else if (lockType == LockType.WRITE_LOCK) {
-            mLock = mLocker.tryClaimWrite();
+            try {
+                mLock = mLocker.claimWrite();
+            } catch (InterruptedException e) {
+                throw new InterruptedIOException();
+            }
         }
 
         return mLock != null;

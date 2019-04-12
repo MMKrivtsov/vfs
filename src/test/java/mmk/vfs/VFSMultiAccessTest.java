@@ -84,6 +84,47 @@ public class VFSMultiAccessTest {
         }
     }
 
+    @Test(expected = FileAlreadyOpenException.class)
+    public void testConcurrentWriteAndReadAccess() throws IOException {
+        String fileName = "file.ext";
+
+        try (VirtualFileSystem vfs = createVirtualFileSystem()) {
+            vfs.createFile(fileName);
+            VFSFile file1 = vfs.openFile(fileName, FileOpenMode.READ_WRITE);
+            Assert.assertNotNull(file1);
+            VFSFile file2 = vfs.openFile(fileName, FileOpenMode.READ);
+            Assert.fail("Should fail opening same file second time");
+        }
+    }
+
+    @Test(expected = FileAlreadyOpenException.class)
+    public void testConcurrentReadAndWriteAccess() throws IOException {
+        String fileName = "file.ext";
+
+        try (VirtualFileSystem vfs = createVirtualFileSystem()) {
+            vfs.createFile(fileName);
+            VFSFile file1 = vfs.openFile(fileName, FileOpenMode.READ);
+            Assert.assertNotNull(file1);
+            VFSFile file2 = vfs.openFile(fileName, FileOpenMode.READ_WRITE);
+            Assert.fail("Should fail opening same file second time");
+        }
+    }
+
+    @Test
+    public void testReadAfterWriteAccess() throws IOException {
+        String fileName = "file.ext";
+
+        try (VirtualFileSystem vfs = createVirtualFileSystem()) {
+            vfs.createFile(fileName);
+            try (VFSFile file1 = vfs.openFile(fileName, FileOpenMode.READ_WRITE)) {
+                Assert.assertNotNull(file1);
+            }
+            try (VFSFile file2 = vfs.openFile(fileName, FileOpenMode.READ)) {
+                Assert.assertNotNull(file2);
+            }
+        }
+    }
+
     @Test
     public void testConcurrentDirectoryAccess() throws IOException {
         String dirName = "directory";
