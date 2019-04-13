@@ -1,34 +1,35 @@
 package mmk.vfs.locks;
 
-import java.util.concurrent.locks.ReentrantReadWriteLock;
+import java.util.concurrent.Semaphore;
 
 /**
  * Storage File / Storage Block access provider. Allows getting shared read and exclusive write locks in blocking mode.
  */
 public class ReadWriteAccessProvider extends AccessProvider {
-    private final ReentrantReadWriteLock mReadWriteLock;
+    private Semaphore mSemaphore;
 
     public ReadWriteAccessProvider(Runnable doOnNoReferences) {
         super(doOnNoReferences);
-        mReadWriteLock = new ReentrantReadWriteLock();
+
+        mSemaphore = new Semaphore(Integer.MAX_VALUE, true);
     }
 
     public Lock claimRead() throws InterruptedException {
-        mReadWriteLock.readLock().lockInterruptibly();
+        mSemaphore.acquire(1);
         return createNewLock(false);
     }
 
     public Lock claimWrite() throws InterruptedException {
-        mReadWriteLock.writeLock().lockInterruptibly();
+        mSemaphore.acquire(Integer.MAX_VALUE);
         return createNewLock(true);
     }
 
     protected void releaseLock(Lock lock) {
         if (lock.isWriteLock()) {
-            mReadWriteLock.writeLock().unlock();
+            mSemaphore.release(Integer.MAX_VALUE);
         }
         else {
-            mReadWriteLock.readLock().unlock();
+            mSemaphore.release(1);
         }
     }
 }
